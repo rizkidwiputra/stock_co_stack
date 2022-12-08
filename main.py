@@ -25,12 +25,12 @@ class LinkedList:
         else:
             n = self.start_node
             print("      ===>> Isi Gudang <<===")   
-            print("-"*30)
+            print("-"*33)
             while n is not None:
                 print(f"| {count}. {n.data:<26} |")           
                 n = n.ref
                 count += 1
-            print("-"*30)
+            print("-"*33)
 
     def insert(self, data):
         new_node = Node(data)
@@ -46,7 +46,11 @@ class LinkedList:
             return
         data = self.start_node.data
         self.start_node = self.start_node.ref
-        return print(f"[{data}] Berhasil dihapus...")
+        print("         ===>> Isi Gudang <<===")
+        print("-"*40)
+        print(f"| [{data}] {'Berhasil dihapus...':<26} |")
+        print("-"*40)
+        return data
     
     def count(self):
         if self.start_node is None:
@@ -84,7 +88,7 @@ class Stack:
     def count(self):
         return self.stack.count()
 
-
+# Menginisialisasikan class stack dalam variabel "stack"
 stack = Stack()
 
 def lihat_barang():
@@ -95,7 +99,8 @@ def lihat_barang():
 def insert_barang():
     barang = input("\nImportkan Barang --->> ")
     stack.push(barang)
-    tanya = input("apakah ingin menambahkan barang lagi (y/n)? ")
+    print(f"[{barang}] Berhasil Ditambahkan...")
+    tanya = input("Apakah ingin menambahkan barang lagi (y/n)? ")
     if tanya == "y":
         insert_barang()
     elif tanya == "n":
@@ -133,6 +138,11 @@ def menu():
     elif pilihan == "4":
         clear()
         jumlah_barang()
+    else:
+        clear()
+        print("Maaf, inputan anda salah..!")
+        time.sleep(1)
+        menu()
 
 
 menu()
