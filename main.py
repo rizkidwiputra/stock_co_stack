@@ -16,6 +16,7 @@ class LinkedList:
 
     def isi_list(self):
         count = 1
+        barang = []
         if self.start_node is None:
             print("    ===>> Isi Gudang <<===")
             print("-"*30)
@@ -27,8 +28,10 @@ class LinkedList:
             print("      ===>> Isi Gudang <<===")   
             print("-"*33)
             while n is not None:
-                print(f"| {count}. {n.data:<26} |")           
+                barang.append(n.data)         
                 n = n.ref
+            for i in barang[::-1]:
+                print(f"| {count}. {i:<26} |")
                 count += 1
             print("-"*33)
 
