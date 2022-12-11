@@ -1,8 +1,8 @@
 import os, time
 
-
 def clear():
     os.system('cls' or 'clear')
+
 
 class Node:
     def __init__(self, data):
@@ -54,7 +54,11 @@ class LinkedList:
     
     def count(self):
         if self.start_node is None:
-            return print ("Jumlah Barang --->> 0")
+            print("   ===>> Jumlah Barang <<===")
+            print("-"*31)
+            print (f"| {'Jumlah Barang --->> 0':<27} |")
+            print("-"*31)
+            return
         n = self.start_node
         count = 0;
         while n is not None:
@@ -88,7 +92,8 @@ class Stack:
     def count(self):
         return self.stack.count()
 
-# Menginisialisasikan class stack dalam variabel "stack"
+
+# Menginisialisasikan class Stack dalam variabel "stack"
 stack = Stack()
 
 def lihat_barang():
@@ -124,6 +129,7 @@ def menu():
     print(f"| {'[2] Tambahkan Barang' :<26} |")
     print(f"| {'[3] Hapus Barang' :<26} |")
     print(f"| {'[4] Jumlah Barang' :<26} |")
+    print(f"| {'[5] Exit' :<26} |")
     print("-"*30)
     pilihan = input("\nPilih Menu --->> ")
     if pilihan == "1":
@@ -138,6 +144,9 @@ def menu():
     elif pilihan == "4":
         clear()
         jumlah_barang()
+    elif pilihan == "5":
+        clear()
+        exit()
     else:
         clear()
         print("Maaf, inputan anda salah..!")
