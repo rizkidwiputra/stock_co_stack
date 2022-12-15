@@ -63,7 +63,7 @@ class LinkedList:
             print("-"*31)
             return
         n = self.start_node
-        count = 0;
+        count = 0
         while n is not None:
             count = count + 1
             n = n.ref
@@ -80,14 +80,6 @@ class Stack:
     def pop(self):
         removed = self.stack.delete()
         return removed
-    
-    def peek(self):
-        if self.stack.start_node is None:
-            print("Stack has no element")
-            return
-        else:
-            n = self.stack.start_node
-            print("data teratas adalah :", n.data )
 
     def peek_all(self):
         return self.stack.isi_list()
