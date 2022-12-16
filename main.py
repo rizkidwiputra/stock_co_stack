@@ -10,7 +10,7 @@ class Node:
         self.ref = None
 
 
-class LinkedList:
+class Stack:
     def __init__(self):
         self.start_node = None
 
@@ -56,58 +56,60 @@ class LinkedList:
         return data
     
     def count(self):
+        barang = []
         if self.start_node is None:
             print("   ===>> Jumlah Barang <<===")
             print("-"*31)
             print (f"| {'Jumlah Barang --->> 0':<27} |")
             print("-"*31)
             return
-        n = self.start_node
-        count = 0
-        while n is not None:
-            count = count + 1
-            n = n.ref
-        return print(f"Jumlah Barang --->> {count}")
+        else:
+            count = 0
+            n = self.start_node
+            while n is not None:
+                count += 1
+                barang.append(n.data)
+                n = n.ref
+            print("   ===>> Jumlah Barang <<===")
+            print("-"*31)
+            print(f"| {'Jumlah Barang -->>'} {count:<8} |")
+            print("-"*31)
+            set_barang = set(barang)
+            for i in set_barang:
+                jum = 0
+                for u in barang:
+                    if i == u:
+                        jum += 1
+                print(f"| {jum} {i:<25} |")
+            print("-"*31)
 
-
-class Stack:
-    def __init__(self):
-        self.stack = LinkedList()
-
-    def push(self, data):
-        self.stack.insert(data)
-
-    def pop(self):
-        removed = self.stack.delete()
-        return removed
-
-    def peek_all(self):
-        return self.stack.isi_list()
-
-    def count(self):
-        return self.stack.count()
-
+# ====================================================================================================================================
 
 # Menginisialisasikan class Stack dalam variabel "stack"
 stack = Stack()
 
 def lihat_barang():
-    stack.peek_all()
+    stack.isi_list()
     input("Tekan Enter...")
     menu()
 
 def insert_barang():
+    clear()
     barang = input("\nImportkan Barang --->> ")
-    stack.push(barang)
+    stack.insert(barang)
     print(f"[{barang}] Berhasil Ditambahkan...")
     tanya = input("Apakah ingin menambahkan barang lagi (y/n)? ")
     if tanya == "y":
         insert_barang()
     elif tanya == "n":
         menu()
+    else:
+        print("\nMaaf, inputan anda salah..!")
+        time.sleep(1)
+        insert_barang()
 
 def hapus_barang():
-    stack.pop()
+    stack.delete()
     time.sleep(1)
     menu()
 
